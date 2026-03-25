@@ -53,6 +53,7 @@ export default function Testimonials() {
                   <img
                     src={getStaffAvatar(TESTIMONIALS[index].avatar, TESTIMONIALS[index].gender, TESTIMONIALS[index].name)}
                     alt={TESTIMONIALS[index].name}
+                    referrerPolicy="no-referrer"
                     className="relative w-24 h-24 rounded-full border-4 border-white shadow-lg object-cover"
                   />
                 </div>

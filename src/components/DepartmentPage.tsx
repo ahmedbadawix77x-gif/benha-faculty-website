@@ -23,6 +23,7 @@ export default function DepartmentPage({ dept, onBack }: DepartmentPageProps) {
         <img
           src={dept.image}
           alt={dept.title}
+          referrerPolicy="no-referrer"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A2540]/60 via-[#0A2540]/40 to-[#F8FAFC] z-10" />
@@ -141,7 +142,7 @@ export default function DepartmentPage({ dept, onBack }: DepartmentPageProps) {
                     whileHover={{ scale: 1.05 }}
                     className="aspect-square rounded-2xl overflow-hidden border border-gray-100"
                   >
-                    <img src={img} alt="Activity" className="w-full h-full object-cover" />
+                    <img src={img} alt="Activity" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
                   </motion.div>
                 ))}
               </div>
@@ -165,7 +166,7 @@ export default function DepartmentPage({ dept, onBack }: DepartmentPageProps) {
                 فيديو تعريفي
               </h3>
               <div className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer">
-                <img src={dept.image} className="w-full h-full object-cover grayscale-[0.5]" />
+                <img src={dept.image} referrerPolicy="no-referrer" className="w-full h-full object-cover grayscale-[0.5]" />
                 <div className="absolute inset-0 bg-blue-900/20 flex items-center justify-center group-hover:bg-blue-900/40 transition-all">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
                     <Play className="w-5 h-5 fill-blue-600 text-blue-600 ml-1" />

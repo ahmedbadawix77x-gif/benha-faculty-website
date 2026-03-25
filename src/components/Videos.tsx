@@ -75,6 +75,7 @@ export default function Videos() {
                 <img
                   src={video.thumbnail}
                   alt={video.title}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
                 
@@ -135,7 +136,7 @@ export default function Videos() {
                   <div className="flex -space-x-2 rtl:space-x-reverse">
                     {[1, 2, 3].map((_, i) => (
                       <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-gray-100 overflow-hidden shadow-sm">
-                        <img src={`https://avatar.iran.liara.run/public/job?username=${i + video.id}`} alt="user" className="w-full h-full object-cover" />
+                        <img src={`https://avatar.iran.liara.run/public/job?username=${i + video.id}`} alt="user" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
                       </div>
                     ))}
                   </div>

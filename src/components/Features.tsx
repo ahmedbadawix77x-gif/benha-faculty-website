@@ -92,6 +92,7 @@ export default function Features() {
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200"
                 alt="Students Working"
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover grayscale-[0.2]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent" />

@@ -25,6 +25,7 @@ export default function Hero() {
         <img
           src="https://images.unsplash.com/photo-1541339907198-e08756ebafe1?auto=format&fit=crop&q=80&w=1920"
           alt="University Campus"
+          referrerPolicy="no-referrer"
           className="w-full h-full object-cover opacity-30"
         />
       </motion.div>

@@ -8,9 +8,6 @@ interface DepartmentsProps {
 }
 
 export default function Departments({ onSelect }: DepartmentsProps) {
-  // Triple the departments to ensure a seamless infinite loop
-  const duplicatedDepartments = [...DEPARTMENTS, ...DEPARTMENTS, ...DEPARTMENTS];
-
   return (
     <section id="departments" className="py-32 bg-white relative overflow-hidden" dir="rtl">
       {/* Background Glow */}
@@ -48,76 +45,57 @@ export default function Departments({ onSelect }: DepartmentsProps) {
             نقدم مجموعة متنوعة من التخصصات النوعية التي تجمع بين الجانب الأكاديمي والمهاري لتأهيلك لسوق العمل الحديث.
           </motion.p>
         </div>
-      </div>
 
-      {/* Infinite Carousel Container */}
-      <div className="relative w-full overflow-hidden py-10">
-        {/* Edge Fading Gradients */}
-        <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-white via-white/80 to-transparent z-20 pointer-events-none" />
-
-        <div className="flex w-max px-4 animate-scroll hover:[animation-play-state:paused] gap-8" style={{ willChange: "transform" }}>
-          {duplicatedDepartments.map((dept, index) => (
-            <div
-              key={`${dept.id}-${index}`}
-              className="flex-shrink-0 w-[320px] md:w-[400px]"
+        {/* Static Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {DEPARTMENTS.map((dept, index) => (
+            <motion.div
+              key={dept.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 hover:border-blue-200 transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col h-full"
             >
-              <motion.div 
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="group relative bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 hover:border-blue-200 transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 h-full flex flex-col"
-              >
-                {/* Image Container */}
-                <div className="relative h-72 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10" />
-                  <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.8 }}
-                    src={dept.image}
-                    alt={dept.title}
-                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
-                  />
-                  
-                  {/* Overlay Icon */}
-                  <div className="absolute top-8 right-8 z-20 w-14 h-14 bg-white/90 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500 shadow-xl">
-                    <ArrowRight className="text-blue-600 w-7 h-7 -rotate-45 group-hover:rotate-0 group-hover:text-white transition-all duration-500" />
-                  </div>
+              {/* Image Container */}
+              <div className="relative h-64 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10" />
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.8 }}
+                  src={dept.image}
+                  alt={dept.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
+                />
+                
+                {/* Overlay Icon */}
+                <div className="absolute top-6 right-6 z-20 w-12 h-12 bg-white/90 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500 shadow-xl">
+                  <ArrowRight className="text-blue-600 w-6 h-6 -rotate-45 group-hover:rotate-0 group-hover:text-white transition-all duration-500" />
                 </div>
+              </div>
 
-                {/* Content */}
-                <div className="p-10 flex-grow flex flex-col">
-                  <h3 className="text-2xl font-bold text-[#0A2540] mb-4 font-arabic group-hover:text-blue-600 transition-colors">
-                    {dept.title}
-                  </h3>
-                  <p className="text-[#0A2540]/50 text-base leading-relaxed mb-8 font-arabic line-clamp-3 flex-grow">
-                    {dept.description}
-                  </p>
-                  
-                  <button
-                    onClick={() => onSelect(dept)}
-                    className="w-full py-5 bg-gray-50 hover:bg-blue-600 text-[#0A2540] hover:text-white rounded-[1.5rem] font-bold text-base transition-all border border-gray-100 hover:border-blue-500 font-arabic flex items-center justify-center gap-3 group/btn shadow-sm"
-                  >
-                    تفاصيل القسم
-                    <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-[-6px] transition-transform" />
-                  </button>
-                </div>
-              </motion.div>
-            </div>
+              {/* Content */}
+              <div className="p-8 flex-grow flex flex-col">
+                <h3 className="text-2xl font-bold text-[#0A2540] mb-4 font-arabic group-hover:text-blue-600 transition-colors">
+                  {dept.title}
+                </h3>
+                <p className="text-[#0A2540]/50 text-base leading-relaxed mb-8 font-arabic line-clamp-3 flex-grow">
+                  {dept.description}
+                </p>
+                
+                <button
+                  onClick={() => onSelect(dept)}
+                  className="w-full py-4 bg-gray-50 hover:bg-blue-600 text-[#0A2540] hover:text-white rounded-[1.5rem] font-bold text-base transition-all border border-gray-100 hover:border-blue-500 font-arabic flex items-center justify-center gap-3 group/btn shadow-sm"
+                >
+                  تفاصيل القسم
+                  <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-[-6px] transition-transform" />
+                </button>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(33.33%); }
-        }
-        .animate-scroll {
-          animation: scroll 40s linear infinite;
-        }
-        [dir="rtl"] .animate-scroll {
-          animation: scroll 40s linear infinite;
-        }
-      `}} />
     </section>
   );
 }

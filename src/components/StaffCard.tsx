@@ -30,6 +30,7 @@ export default function StaffCard({ name, role, gender, image, className = "" }:
           <img
             src={avatarUrl}
             alt={name}
+            referrerPolicy="no-referrer"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         </div>
