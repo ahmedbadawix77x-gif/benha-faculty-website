@@ -8,12 +8,6 @@ The project focuses on delivering a **cinematic user experience**, combining cle
 
 ---
 
-## 🚀 Live Preview
-
-🔗 https://ai.studio/apps/698ba2fd-3df2-42ab-9ad6-a4bcda6dc17c
-
----
-
 ## 🎯 Project Goals
 
 * Present all faculty departments in a modern way
